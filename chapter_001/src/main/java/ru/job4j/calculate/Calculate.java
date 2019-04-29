@@ -9,11 +9,19 @@ package ru.job4j.calculate;
 
 public class Calculate {
     /**
-    * Метод Main
-    * @param args
-    * @return String
+    * Метод Main.
+    * @param args.
+    * @return String.
     */
     public static void main(String[] args) {
         System.out.println("Hello world!!!");
+    }
+    /**
+    * Метод Echo.
+    * @param name Your name.
+    * @return Echo plus your name.
+    */
+    public String echo(String name) {
+        return "Echo, echo, echo : " + name;
     }
 }
