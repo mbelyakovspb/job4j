@@ -5,17 +5,17 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
-* Test.
-*
-* @author Maksim Belyakov (belyak1313@bk.ru)
-* @version $Id$
-* @since 0.1
-*/
+ * Test.
+ *
+ * @author Maksim Belyakov (belyak1313@bk.ru)
+ * @version $Id$
+ * @since 0.1
+ */
 public class CalculateTest {
-/**
-* Test echo.
-*/
-    
+    /**
+     * Test echo.
+     */
+
     @Test
     public void whenTakeNameThenThreeEchoPlusName() {
         String input = "Belyakov Maksim";

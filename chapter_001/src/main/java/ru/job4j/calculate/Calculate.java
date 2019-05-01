@@ -9,9 +9,7 @@ package ru.job4j.calculate;
 
 public class Calculate {
     /**
-    * Метод Main.
-    * @param args.
-    * @return String.
+    * Class Calculate.
     */
     public static void main(String[] args) {
         System.out.println("Hello world!!!");
