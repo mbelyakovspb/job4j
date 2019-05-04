@@ -17,4 +17,10 @@ public class DummyBotTest {
         DummyBot dummyBot = new DummyBot();
         assertThat(dummyBot.answer("Пока"), is("До скорой встречи."));
     }
+    @Test
+    public void whenBotAsksToAskAnotherQuestion() {
+        DummyBot dummyBot = new DummyBot();
+        assertThat(dummyBot.answer("Как сам бро?"), is(
+                "Это ставит меня в тупик. Задайте другой вопрос."));
+    }
 }
