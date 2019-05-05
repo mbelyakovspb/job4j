@@ -42,6 +42,6 @@ public class Triangle {
      * @return true, если треугольник со сторонами a,b,c существует
      */
     public boolean exist(double a, double c, double b) {
-        return ((a + b) >= c || (b + c) >=  a || (a + c) >= b);
+        return ((a + b) > c && (b + c) >  a && (a + c) > b);
     }
 }
