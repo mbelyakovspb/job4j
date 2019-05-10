@@ -14,4 +14,11 @@ public class FindLoopTest {
         int result = findLoop.indexOf(input, 5);
         assertThat(result, is(0));
     }
+    @Test
+    public void whenArrayNotHas5ThenIndexNot() {
+        FindLoop findLoop = new FindLoop();
+        int[] input = new int[] {4, 10, 3};
+        int result = findLoop.indexOf(input, 5);
+        assertThat(result, is(-1));
+    }
 }

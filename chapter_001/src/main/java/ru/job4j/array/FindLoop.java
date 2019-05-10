@@ -13,7 +13,7 @@ public class FindLoop {
      * @return индекс ячейки, в которой хранится element
      */
     public int indexOf(int[] data, int element) {
-        int index = 0;
+        int index = -1;
         for (int i = 0; i < data.length; i++) {
             if (data[i] == element) {
                 index = i;
