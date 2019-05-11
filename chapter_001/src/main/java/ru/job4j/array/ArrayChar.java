@@ -1,8 +1,8 @@
 package ru.job4j.array;
 /**
- * Класс Turn
+ * Класс ArrayChar
  * @author Maksim Belyakov (belyak1313@bk.ru)
- * @since 10.05.2019
+ * @since 11.05.2019
  * @version 1
  */
 public class ArrayChar {
