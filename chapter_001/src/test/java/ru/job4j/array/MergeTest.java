@@ -60,4 +60,14 @@ public class MergeTest {
         );
         assertThat(result, is(expect));
     }
+    @Test
+    public void whenLeftThreeRightFour() {
+        Merge algo = new Merge();
+        int[] expect = {1, 2, 3, 4, 5, 6, 7};
+        int[] result = algo.merge(
+                new int[] {7 ,3, 1},
+                new int[] {2, 4, 6, 5}
+        );
+        assertThat(result, is(expect));
+    }
 }

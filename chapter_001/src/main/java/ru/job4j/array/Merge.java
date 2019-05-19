@@ -15,12 +15,12 @@ public class Merge {
         int[] rsl = new int[left.length + right.length];
         System.arraycopy(left, 0, rsl, 0, left.length);
         System.arraycopy(right, 0, rsl, left.length, right.length);
-        for (int i = 0; i < rsl.length; i++) {
-            for (int j = i + 1; j < rsl.length; j++) {
-                if (rsl[i] > rsl[j]) {
-                    int number = rsl[i];
-                    rsl[i] = rsl[j];
-                    rsl[j] = number;
+        for (int i = rsl.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (rsl[j] > rsl[j + 1]) {
+                    int number = rsl[j];
+                    rsl[j] = rsl[j + 1];
+                    rsl[j + 1] = number;
                 }
             }
         }
