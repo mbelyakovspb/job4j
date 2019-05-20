@@ -13,8 +13,8 @@ public class Square {
      */
     public int[] calculate(int bound) {
         int[] number = new int[bound];
-        for (int i = 0; i < bound; i++) {
-            number[i] = (i + 1) * (i + 1);
+        for (int input = 0; input < bound; input++) {
+            number[input] = (input + 1) * (input + 1);
         }
         return number;
     }

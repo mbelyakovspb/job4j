@@ -8,15 +8,15 @@ package ru.job4j.array;
 public class Turn {
     /**
      * Метод переворачивает массив заданом наперед
-     * @param massiv - массива целых чисел
+     * @param array - массива целых чисел
      * @return перевернутый массив
      */
-    public int[] back(int[] massiv) {
-        for (int i = 0; i < massiv.length / 2; i++) {
-            int number = massiv[i];
-            massiv[i] = massiv[massiv.length - i - 1];
-            massiv[massiv.length - i - 1] = number;
+    public int[] back(int[] array) {
+        for (int input = 0; input < array.length / 2; input++) {
+            int number = array[input];
+            array[input] = array[array.length - input - 1];
+            array[array.length - input - 1] = number;
         }
-        return massiv;
+        return array;
     }
 }

@@ -27,7 +27,7 @@ public class Calculator {
      * @param first, second
      * @return произведение чисел first, second
      */
-    public double multipl(double first, double second) {
+    public double multiplication(double first, double second) {
         return first * second;
     }
     /**

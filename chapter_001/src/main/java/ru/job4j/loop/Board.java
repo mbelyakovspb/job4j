@@ -14,9 +14,9 @@ public class Board {
      */
     public String paint(int width, int height) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if ((i + j) % 2 == 0) {
+        for (int out = 0; out < height; out++) {
+            for (int in = 0; in < width; in++) {
+                if ((out + in) % 2 == 0) {
                     stringBuilder.append("X");
                 } else {
                     stringBuilder.append(" ");

@@ -6,10 +6,10 @@ package ru.job4j.array;
  * @version 1
  */
 public class ArrayChar {
-    private char[] data;
+    private char[] array;
 
     public ArrayChar(String line) {
-        this.data = line.toCharArray();
+        this.array = line.toCharArray();
     }
     /**
      * Метод проверяет что слово начинается с префикса
@@ -20,7 +20,7 @@ public class ArrayChar {
         boolean result = true;
         char[] value = prefix.toCharArray();
         for (int i = 0; i < value.length; i++) {
-            if (value[i] != data[i]) {
+            if (value[i] != array[i]) {
                 result = false;
                 break;
             }

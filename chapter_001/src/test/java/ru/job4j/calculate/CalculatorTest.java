@@ -26,7 +26,7 @@ public class CalculatorTest {
     @Test
     public void whenThreeMultiplyThreeThenNine() {
         Calculator calculator = new Calculator();
-        double result = calculator.multipl(3D, 3D);
+        double result = calculator.multiplication(3D, 3D);
         double expected = 9D;
         assertThat(result, is(expected));
     }
