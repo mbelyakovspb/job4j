@@ -10,7 +10,7 @@ public class MaxTest {
     @Test
     public void whenNumberTwoAndOneThenTwoMore() {
         Max max = new Max();
-        int result = max.max(2,1);
+        int result = max.max(2, 1);
         assertThat(result, is(2));
     }
 }

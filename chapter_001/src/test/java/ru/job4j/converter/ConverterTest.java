@@ -24,7 +24,7 @@ public class ConverterTest {
     }
 
     @Test
-    public void when1RubleEqual0_014Euro() {
+    public void when1RubleEqual0014Euro() {
         Converter converter = new Converter();
         double result = converter.euroToRuble(1);
         double expected = 0.014D;
@@ -32,7 +32,7 @@ public class ConverterTest {
     }
 
     @Test
-    public void when1RubleEqual0_017Dollar() {
+    public void when1RubleEqual0017Dollar() {
         Converter converter = new Converter();
         double result = converter.dollarToRuble(1);
         double expected = 0.017D;
