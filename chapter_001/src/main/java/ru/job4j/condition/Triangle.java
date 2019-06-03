@@ -5,7 +5,31 @@ package ru.job4j.condition;
  * @since 04.05.2019
  * @version 1
  */
+@SuppressWarnings("ALL")
 public class Triangle {
+    /**
+     * Это поле объекта. Доступно только конкретному объекту
+     */
+    private Point first;
+    /**
+     * Это поле объекта. Доступно только конкретному объекту
+     */
+    private Point second;
+    /**
+     * Это поле объекта. Доступно только конкретному объекту
+     */
+    private Point third;
+    /**
+     * Конструктор, который принимает начальное состояние объекта "вершина треугольника"
+     * @param first - первая вершина треугольника
+     * @param second - вторая вершина треугольника
+     * @param third - третья вершина треугольника
+     */
+    public Triangle(Point ap, Point bp, Point cp) {
+        this.first = ap;
+        this.second = bp;
+        this.third = cp;
+    }
     /**
      * Метод вычисляет периметр по длинам сторон
      * @param a расстояние между a и b
@@ -18,19 +42,16 @@ public class Triangle {
     }
     /**
      * Метод вычисляет площадь треугольника
-     * @param x1, y1 первая вершина треугольника
-     * @param x2, y2 вторая вершина треугольника
-     * @param x3, y3 третья вершина треугольника
+     * @param first первая вершина треугольника
+     * @param second вторая вершина треугольника
+     * @param third третья вершина треугольника
      * @return result величину площади треугольника
      */
-    public double area(int x1, int y1, int x2, int y2, int x3, int y3) {
+    public double area(Point first, Point second, Point third) {
         double result = -1;
-        Point point1 = new Point(x1, y1);
-        Point point2 = new Point(x2, y2);
-        Point point3 = new Point(x3, y3);
-        double a = point1.distance(point2);
-        double b = point2.distance(point3);
-        double c = point3.distance(point1);
+        double a = first.distance(second);
+        double b = second.distance(third);
+        double c = third.distance(first);
         double p = period(a, b, c);
         if (this.exist(a, b, c)) {
             result = Math.sqrt(p * (p - a) * (p - b) * (p - c));
