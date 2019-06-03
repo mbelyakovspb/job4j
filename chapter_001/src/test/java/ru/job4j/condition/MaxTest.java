@@ -13,4 +13,16 @@ public class MaxTest {
         int result = max.max(2, 1);
         assertThat(result, is(2));
     }
+    @Test
+    public void whenFirstEqual10SecondEqual15ThirdEqual35Then35() {
+        Max max = new Max();
+        int result = max.max(10, 15, 35);
+        assertThat(result, is(35));
+    }
+    @Test
+    public void whenFirstEqual10SecondEqual15ThirdEqual35Fourth52Then52() {
+        Max max = new Max();
+        int result = max.max(10, 15, 35, 52);
+        assertThat(result, is(52));
+    }
 }

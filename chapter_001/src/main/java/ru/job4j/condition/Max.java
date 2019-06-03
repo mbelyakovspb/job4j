@@ -14,4 +14,20 @@ public class Max {
     public int max(int left, int right) {
         return left >= right ? left : right;
     }
+    /**
+     * Метод возвращает максимальное число из трех
+     * @param first - первое число, second - второе число, third - третье число
+     * @return максимальное из трех чисел
+     */
+    public int max(int first, int second, int third) {
+        return max(first, second) >= third ? max(first, second) : third;
+    }
+    /**
+     * Метод возвращает максимальное число из четырех
+     * @param first - первое число, second - второе число, third - третье число, fourth - четвертое число
+     * @return максимальное из четырех чисел
+     */
+    public int max(int first, int second, int third, int fourth) {
+        return max(first, second, third) >= fourth ? max(first, second, fourth) : fourth;
+    }
 }
