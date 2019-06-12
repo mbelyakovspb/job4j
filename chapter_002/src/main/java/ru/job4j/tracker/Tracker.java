@@ -1,7 +1,6 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 /**
  * Класс Tracker
  * @author Maksim Belyakov (belyak1313@bk.ru)
@@ -51,7 +50,7 @@ public class Tracker {
         boolean result = false;
         for (int index = 0; index != position; index++) {
             if (items[index].getId().equals(id)) {
-                System.arraycopy(items, index + 1, items, index, items.length - index - 1);
+                System.arraycopy(this.items, index + 1, items, index, items.length - index - 1);
                 result = true;
                 position--;
                 break;
