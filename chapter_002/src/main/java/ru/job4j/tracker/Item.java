@@ -75,4 +75,11 @@ public class Item {
     public int hashCode() {
         return Objects.hash(id, name, desc, time);
     }
+
+    @Override
+    public String toString() {
+        return "Id заявки: " +  this.id
+                + " Имя заявки: " + this.name
+                + " Описание заявки: " + this.desc;
+    }
 }
