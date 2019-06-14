@@ -103,19 +103,27 @@ public class StartUI {
     public void editItem() {
         System.out.println("---------- Редактирование заявки ----------");
         String id = this.input.ask("Введите id заявки : ");
-        String name = this.input.ask("Внесите изменения в имя заявки : ");
-        String desc = this.input.ask("Внесите изменения в описание заявки : ");
-        tracker.replace(id, new Item(name, desc));
-        System.out.println("---------- Изменения внесены успешно ----------");
+        if (tracker.findById(id) != null) {
+            String name = this.input.ask("Внесите изменения в имя заявки : ");
+            String desc = this.input.ask("Внесите изменения в описание заявки : ");
+            tracker.replace(id, new Item(name, desc));
+            System.out.println("---------- Изменения внесены успешно ----------");
+        } else {
+            System.out.println("---------- Заявки с таким Id не существует ----------");
+        }
     }
     /**
      * Метод реализует удаление заявки
      */
     public void deleteItem() {
-        System.out.println("---------- Редактирование заявки ----------");
+        System.out.println("---------- Удаление заявки ----------");
         String id = this.input.ask("Введите id заявки : ");
-        tracker.delete(id);
-        System.out.println("---------- Заявка успешно удалена ----------");
+        if (tracker.findById(id) != null) {
+            tracker.delete(id);
+            System.out.println("---------- Заявка успешно удалена ----------");
+        } else {
+            System.out.println("---------- Заявки с таким Id не существует ----------");
+        }
     }
     /**
      * Метод реализует поиск заявки по id
@@ -123,7 +131,11 @@ public class StartUI {
     public void findItemById() {
         System.out.println("---------- Поиск заявки по id ----------");
         String id = this.input.ask("Введите id заявки : ");
-        System.out.println(tracker.findById(id).toString());
+        if (tracker.findById(id) != null) {
+            System.out.println(tracker.findById(id).toString());
+        } else {
+            System.out.println("---------- Заявки с таким Id не существует ----------");
+        }
     }
     /**
      * Метод реализует поиск заявки по имени
