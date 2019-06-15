@@ -118,12 +118,8 @@ public class StartUI {
     public void deleteItem() {
         System.out.println("---------- Удаление заявки ----------");
         String id = this.input.ask("Введите id заявки : ");
-        if (tracker.findById(id) != null) {
-            tracker.delete(id);
-            System.out.println("---------- Заявка успешно удалена ----------");
-        } else {
-            System.out.println("---------- Заявки с таким Id не существует ----------");
-        }
+        tracker.delete(id);
+        System.out.println("---------- Заявка успешно удалена ----------");
     }
     /**
      * Метод реализует поиск заявки по id
@@ -131,8 +127,9 @@ public class StartUI {
     public void findItemById() {
         System.out.println("---------- Поиск заявки по id ----------");
         String id = this.input.ask("Введите id заявки : ");
-        if (tracker.findById(id) != null) {
-            System.out.println(tracker.findById(id).toString());
+        Item item = tracker.findById(id);
+        if (item != null) {
+            System.out.println(item.toString());
         } else {
             System.out.println("---------- Заявки с таким Id не существует ----------");
         }
