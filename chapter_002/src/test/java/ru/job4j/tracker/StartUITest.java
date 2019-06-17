@@ -21,19 +21,17 @@ public class StartUITest {
     private final StringBuilder menu = new StringBuilder()
             .append("Меню")
             .append(System.lineSeparator())
-            .append("0. Добавить новую заявку")
+            .append("0. Добавление новой заявки.")
             .append(System.lineSeparator())
-            .append("1. Показать все заявки")
+            .append("1. Показать все заявки.")
             .append(System.lineSeparator())
-            .append("2. Редактировать заявку")
+            .append("2. Редактировать заявку.")
             .append(System.lineSeparator())
-            .append("3. Удалить заявку")
+            .append("3. Удалить заявку.")
             .append(System.lineSeparator())
-            .append("4. Найти заявку по id")
+            .append("4. Найти заявку по id.")
             .append(System.lineSeparator())
-            .append("5. Найти заявку по имени")
-            .append(System.lineSeparator())
-            .append("6. Выйти из меню")
+            .append("5. Найти заявку по имени.")
             .append(System.lineSeparator());
 
     @Before
@@ -53,13 +51,13 @@ public class StartUITest {
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
-        inputAndStart(new String[]{"0", "test name", "desc", "6"});
+        inputAndStart(new String[]{"0", "test name", "desc", "y"});
         assertThat(this.tracker.findAll()[0].getName(), is("test name"));
     }
 
     @Test
     public void whenShowAllThenTrackerHasAllValue() {
-        inputAndStart(new String[]{"1", "6"});
+        inputAndStart(new String[]{"1", "y"});
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -73,7 +71,6 @@ public class StartUITest {
                                 .append(System.lineSeparator())
                                 .append("---------- Конец списка всех заявок ----------")
                                 .append(System.lineSeparator())
-                                .append(menu)
                                 .toString()
                 )
         );
@@ -81,7 +78,7 @@ public class StartUITest {
 
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
-        inputAndStart(new String[]{"2", this.item.getId(), "test replace", "заменили заявку", "6"});
+        inputAndStart(new String[]{"2", this.item.getId(), "test replace", "заменили заявку", "y"});
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -91,7 +88,6 @@ public class StartUITest {
                                 .append(System.lineSeparator())
                                 .append("---------- Изменения внесены успешно ----------")
                                 .append(System.lineSeparator())
-                                .append(menu)
                                 .toString()
                 )
         );
@@ -99,7 +95,7 @@ public class StartUITest {
 
     @Test
     public void whenDeleteThenTrackerHasNullValue() {
-        inputAndStart(new String[]{"3", this.item.getId(), "6"});
+        inputAndStart(new String[]{"3", this.item.getId(), "y"});
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -109,7 +105,6 @@ public class StartUITest {
                                 .append(System.lineSeparator())
                                 .append("---------- Заявка успешно удалена ----------")
                                 .append(System.lineSeparator())
-                                .append(menu)
                                 .toString()
                 )
         );
@@ -117,7 +112,7 @@ public class StartUITest {
 
     @Test
     public void whenFindItemByIdThenTrackerHasEqualIdValue() {
-        inputAndStart(new String[]{"4", this.item.getId(), "6"});
+        inputAndStart(new String[]{"4", this.item.getId(), "y"});
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -129,7 +124,6 @@ public class StartUITest {
                                         + " Имя заявки: " + this.item.getName()
                                         + " Описание заявки: " + this.item.getDesc())
                                 .append(System.lineSeparator())
-                                .append(menu)
                                 .toString()
                 )
         );
@@ -137,7 +131,7 @@ public class StartUITest {
 
     @Test
     public void whenFindItemByNameThenTrackerHasEqualNameValue() {
-        inputAndStart(new String[]{"5", this.item.getName(), "6"});
+        inputAndStart(new String[]{"5", this.item.getName(), "y"});
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -149,7 +143,6 @@ public class StartUITest {
                                         + " Имя заявки: " + this.item.getName()
                                         + " Описание заявки: " + this.item.getDesc())
                                 .append(System.lineSeparator())
-                                .append(menu)
                                 .toString()
                 )
         );
