@@ -21,11 +21,9 @@ public class ConsoleInput implements Input {
                 break;
             }
         }
-
         if (!result) {
             throw new MenuOutException("Вы ввели цифру, которой нет в меню");
         }
-
         return key;
     }
 }
