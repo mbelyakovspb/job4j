@@ -31,11 +31,11 @@ public class StartUI {
         menu.fillActions();
         do {
             menu.show();
-            menu.select(Integer.valueOf(input.ask("Введите пункт меню: ")));
+            menu.select(input.ask("Введите пункт меню: ", menu.getActionsLength()));
         } while (!"y".equals(this.input.ask("Выйти? (y): ")));
     }
 
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
     }
 }

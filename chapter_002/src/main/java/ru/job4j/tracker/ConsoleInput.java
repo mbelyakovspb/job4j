@@ -10,4 +10,22 @@ public class ConsoleInput implements Input {
         System.out.print(question);
         return scanner.nextLine();
     }
+
+    @Override
+    public int ask(String question, int[] range) throws MenuOutException {
+        int key = Integer.parseInt(ask(question));
+        boolean result = false;
+        for (int value : range) {
+            if (value == key) {
+                result = true;
+                break;
+            }
+        }
+
+        if (!result) {
+            throw new MenuOutException("Вы ввели цифру, которой нет в меню");
+        }
+
+        return key;
+    }
 }
