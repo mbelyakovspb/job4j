@@ -4,7 +4,7 @@ public interface UserAction {
 
     int key();
 
-    void exucute(Input input, Tracker tracker);
+    void execute(Input input, Tracker tracker);
 
     String info();
 }

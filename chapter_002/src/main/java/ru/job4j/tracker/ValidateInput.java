@@ -14,7 +14,7 @@ public class ValidateInput implements Input {
     }
 
     @Override
-    public int ask(String question, int[] range) throws MenuOutException {
+    public int ask(String question, int[] range) {
         boolean result = true;
         int value = -1;
         do {

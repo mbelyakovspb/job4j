@@ -15,6 +15,17 @@ public class StubInput implements Input {
 
     @Override
     public int ask(String question, int[] range) {
-        return Integer.parseInt(this.ask(question));
+        int key = Integer.parseInt(ask(question));
+        boolean result = false;
+        for (int value : range) {
+            if (value == key) {
+                result = true;
+                break;
+            }
+        }
+        if (!result) {
+            throw new MenuOutException("Вы ввели цифру, которой нет в меню");
+        }
+        return key;
     }
 }

@@ -34,4 +34,16 @@ public class ValidateInputTest {
                         String.format("Вы ввели значение, отличное от числа! Введите число из меню!%n")
                 ));
     }
+
+    @Test
+    public void whenValidInput() {
+        ValidateInput validateInput = new ValidateInput(
+                new StubInput(new String[] {"-1", "1"})
+        );
+        validateInput.ask("Enter", new int[]{1});
+        assertThat(this.stdOut.toString(),
+                is(
+                        String.format("Пожалуйста введите цифровое значение, соответствующее цифре из меню!%n")
+                ));
+    }
 }

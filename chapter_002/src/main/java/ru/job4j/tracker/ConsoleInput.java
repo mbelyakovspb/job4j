@@ -12,7 +12,7 @@ public class ConsoleInput implements Input {
     }
 
     @Override
-    public int ask(String question, int[] range) throws MenuOutException {
+    public int ask(String question, int[] range) {
         int key = Integer.parseInt(ask(question));
         boolean result = false;
         for (int value : range) {
