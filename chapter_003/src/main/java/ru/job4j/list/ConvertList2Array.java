@@ -21,10 +21,11 @@ public class ConvertList2Array {
         }
         int[][] array = new int[rows][cells];
         int indexOfNum = 0;
-        for (int out = 0; out < array.length; out++) {
-            for (int in = 0; in < array.length; in++) {
+        for (int[] indexOut : array) {
+            int counter = 0;
+            for (int in = 0; in < indexOut.length; in++) {
                 if (indexOfNum < list.size()) {
-                    array[out][in] = list.get(indexOfNum++);
+                    indexOut[counter++] = list.get(indexOfNum++);
                 }
             }
         }
