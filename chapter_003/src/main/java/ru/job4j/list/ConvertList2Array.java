@@ -21,12 +21,12 @@ public class ConvertList2Array {
         }
         int[][] array = new int[rows][cells];
         int indexOfNum = 0;
-        for (int[] indexOut : array) {
-            int counter = 0;
-            for (int in = 0; in < indexOut.length; in++) {
-                if (indexOfNum < list.size()) {
-                    indexOut[counter++] = list.get(indexOfNum++);
-                }
+        int counter = 0;
+        for (Integer listObj : list) {
+            array[indexOfNum][counter++] = listObj;
+            if (counter == cells) {
+                counter = 0;
+                indexOfNum++;
             }
         }
         return array;
