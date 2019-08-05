@@ -1,5 +1,6 @@
 package ru.job4j.list;
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  * Класс ConvertList2Array
@@ -27,6 +28,20 @@ public class ConvertList2Array {
             if (counter == cells) {
                 counter = 0;
                 indexOfNum++;
+            }
+        }
+        return array;
+    }
+    /**
+     * Метод конвертирует лист массивов в один лист Integer
+     * @param list состоящий из массивов целых чисел
+     * @return метод возвращает лист Integer
+     */
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> array = new ArrayList<>();
+        for (int[] numb : list) {
+            for (int cout : numb) {
+                array.add(cout);
             }
         }
         return array;
