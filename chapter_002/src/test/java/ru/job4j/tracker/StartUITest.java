@@ -52,7 +52,7 @@ public class StartUITest {
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         inputAndStart(new String[]{"0", "test name", "desc", "y"});
-        assertThat(this.tracker.findAll()[0].getName(), is("test name"));
+        assertThat(this.item.getName(), is("test name"));
     }
 
     @Test

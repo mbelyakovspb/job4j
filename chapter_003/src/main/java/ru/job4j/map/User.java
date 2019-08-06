@@ -2,9 +2,9 @@ package ru.job4j.map;
 
 public class User {
 
-    int id;
-    String name;
-    String city;
+    private int id;
+    private String name;
+    private String city;
 
     public User(int id, String name, String city) {
         this.id = id;

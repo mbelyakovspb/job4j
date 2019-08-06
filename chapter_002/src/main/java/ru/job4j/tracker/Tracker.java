@@ -11,7 +11,7 @@ public class Tracker {
     /**
      * Массив для хранение заявок.
      */
-    private final Item[] items = new Item[100];
+    private List<Item> items = new ArrayList<>();
     /**
      * Указатель ячейки для новой заявки.
      */
@@ -22,7 +22,7 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.position++] = item;
+        this.items.add(item);
         return item;
     }
     /**
@@ -32,13 +32,14 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         boolean result = false;
-        for (int index = 0; index != position; index++) {
-            if (items[index].getId().equals(id)) {
-                items[index] = item;
-                item.setId(id);
+        int number = 0;
+        for (Item count : this.items) {
+            if (count.getId().equals(id)) {
+                this.items.set(number, item);
                 result = true;
                 break;
             }
+            number++;
         }
         return result;
     }
@@ -48,36 +49,35 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int index = 0; index != position; index++) {
-            if (items[index].getId().equals(id)) {
-                System.arraycopy(this.items, index + 1, items, index, items.length - index - 1);
+        int number = 0;
+        for (Item count : this.items) {
+            if (count.getId().equals(id)) {
+                this.items.remove(number);
                 result = true;
-                position--;
                 break;
             }
+            number++;
         }
         return result;
     }
     /**
      * Метод реализаущий поиск всех существующих заявок в хранилище
      */
-    public Item[] findAll() {
-        return Arrays.copyOf(items, this.position);
+    public List<Item> findAll() {
+        return this.items.subList(0, this.items.size());
     }
     /**
      * Метод реализаущий поиск заявки в хранилище по имени заявки
      * @param name имя заявки
      */
-    public Item[] findByName(String name) {
-        Item[] result = new Item[this.position];
-        int counter = 0;
-        for (int index = 0; index != position; index++) {
-            if (items[index] != null && items[index].getName().equals(name)) {
-                result[counter] = items[index];
-                counter++;
+    public List<Item> findByName(String name) {
+        List<Item> arrays = new ArrayList<>();
+        for (Item count : this.items) {
+            if (count.getName().equals(name)) {
+                arrays.add(count);
             }
         }
-        return Arrays.copyOf(result, counter);
+        return arrays;
     }
     /**
      * Метод реализаущий поиск заявки в хранилище по имени уникальному номеру
@@ -85,9 +85,9 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (int index = 0; index != position; index++) {
-            if (items[index] != null && items[index].getId().equals(id)) {
-                result = items[index];
+        for (Item count : this.items) {
+            if (count.getId().equals(id)) {
+                result = count;
                 break;
             }
         }
