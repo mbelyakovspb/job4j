@@ -3,6 +3,23 @@ package ru.job4j.sort;
 import java.util.Objects;
 
 public class User implements Comparable<User> {
+
+    private int age;
+    private String name;
+
+    public User(int age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -21,18 +38,6 @@ public class User implements Comparable<User> {
         return Objects.hash(age, name);
     }
 
-    private int age;
-    private String name;
-
-    public User(int age, String name) {
-        this.age = age;
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
     @Override
     public String toString() {
         return "User{"
@@ -43,12 +48,6 @@ public class User implements Comparable<User> {
 
     @Override
     public int compareTo(User o) {
-        int result;
-        if (this.age > o.getAge()) {
-            result = 1;
-        } else {
-            result = -1;
-        }
-        return result;
+        return Integer.compare(this.age, o.age);
     }
 }
