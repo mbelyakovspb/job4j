@@ -33,8 +33,7 @@ public class BishopTest {
         board.add(new Bishop(block));
         try {
             assertThat(board.move(source, dist), is(true));
-        }
-        catch (OccupiedWayException exc) {
+        } catch (OccupiedWayException exc) {
         }
     }
     /**
@@ -49,8 +48,7 @@ public class BishopTest {
         Cell dist = Cell.E6;
         try {
             assertThat(board.move(source, dist), is(true));
-        }
-        catch (FigureNotFoundException exc) {
+        } catch (FigureNotFoundException exc) {
         }
     }
     /**
@@ -67,8 +65,7 @@ public class BishopTest {
         board.add(new Bishop(dist));
         try {
             assertThat(board.move(source, dist), is(true));
-        }
-        catch (ImpossibleMoveException exc) {
+        } catch (ImpossibleMoveException exc) {
         }
     }
 
@@ -79,9 +76,10 @@ public class BishopTest {
         Cell dist = Cell.E6;
         board.add(new Bishop(source));
         board.add(new Bishop(dist));
-        Cell[] steps = new Cell[]{Cell.E6,Cell.F5, Cell.G4};
+        Cell[] steps = new Cell[]{Cell.E6, Cell.F5, Cell.G4};
         try {
             assertThat((new Bishop(source).way(source, dist)), is(steps));
-        } catch (ImpossibleMoveException exception) {}
+        } catch (ImpossibleMoveException exception) {
+        }
     }
 }

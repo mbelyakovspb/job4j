@@ -15,13 +15,14 @@ public class ListCompare implements Comparator<String> {
      */
     @Override
     public int compare(String o1, String o2) {
-        int result = o1.length() <= o2.length() ? o1.length() : o2.length();
-        int counter = o1.length() - o2.length();
-        for (int index = 0; index < result; index++) {
-            if (o1.charAt(index) != o2.charAt(index)) {
-                counter = o1.charAt(index) - o2.charAt(index);
+        int size = Math.min(o1.length(), o2.length());
+        int result = 0;
+        for (int index = 0; index < size; index++) {
+            result = Character.compare(o1.charAt(index), o2.charAt(index));
+            if (result != 0) {
+                break;
             }
         }
-        return counter;
+        return result == 0 ? Integer.compare(o1.length(), o2.length()) : result;
     }
 }
