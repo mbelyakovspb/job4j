@@ -1,4 +1,4 @@
-package ru.job4j.funinterfeces;
+package ru.job4j.lambda;
 
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
@@ -34,6 +34,4 @@ public class Calculator {
                 System.out::println
         );
     }
-
-
 }

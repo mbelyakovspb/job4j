@@ -1,4 +1,4 @@
-package ru.job4j.funinterfeces;
+package ru.job4j.lambda;
 
 import org.junit.Test;
 import java.util.ArrayList;
@@ -17,7 +17,19 @@ public class CalculatorTest {
                 0, 3, 1,
                 (value, index) -> (double) value + index,
                 list::add
-                );
+        );
+        assertThat(list, is(Arrays.asList(1D, 2D, 3D)));
+    }
+
+    @Test
+    public void whenAddUntilThreeTwoVariant() {
+        Calculator calculator = new Calculator();
+        List<Double> list = new ArrayList<>();
+        calculator.multiple(
+                0, 3, 1,
+                MathUtil::add,
+                list::add
+        );
         assertThat(list, is(Arrays.asList(1D, 2D, 3D)));
     }
 }
