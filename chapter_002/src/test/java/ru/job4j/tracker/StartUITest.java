@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.util.function.Consumer;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -12,11 +14,19 @@ public class StartUITest {
 
     private final Tracker tracker = new Tracker();
 
-    private final PrintStream stdOut = System.out;
-
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-    private final Item item = this.tracker.add(new Item("test name", "desc"));
+    private final PrintStream stdOut = System.out;
+
+    private final Consumer<String> outPut = new Consumer<String>() {
+        PrintWriter printWriter = new PrintWriter(out);
+        @Override
+        public void accept(String s) {
+            printWriter.write(s);
+            printWriter.flush();
+            System.out.println();
+        }
+    };
 
     private final StringBuilder menu = new StringBuilder()
             .append("Меню")
@@ -34,6 +44,8 @@ public class StartUITest {
             .append("5. Найти заявку по имени.")
             .append(System.lineSeparator());
 
+    private final Item item = this.tracker.add(new Item("test name", "desc"));
+
     @Before
     public void loadOutput() {
         System.setOut(new PrintStream(this.out));
@@ -45,7 +57,7 @@ public class StartUITest {
 
 
     public void inputAndStart(String[] input) {
-        new StartUI(new StubInput(input), this.tracker).init();
+        new StartUI(new StubInput(input), this.tracker, outPut).init();
     }
 
 
@@ -59,10 +71,10 @@ public class StartUITest {
     public void whenShowAllThenTrackerHasAllValue() {
         inputAndStart(new String[]{"1", "y"});
         assertThat(
-                new String(out.toByteArray()),
+                new String(this.out.toByteArray()),
                 is(
                         new StringBuilder()
-                                .append(menu)
+                                .append(this.menu)
                                 .append("---------- Начало списка всех заявок ----------")
                                 .append(System.lineSeparator())
                                 .append("Id заявки: " +  this.item.getId()
