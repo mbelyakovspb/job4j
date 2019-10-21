@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class ProfilesTest {
 
     @Test
-    public void collect() {
+    public void whenSortingByCityNameLength() {
         Address address1 = new Address("Москва", "Мышинная", 13, 103);
         Address address2 = new Address("Ростов-на-Дону", "Ростовская", 23, 203);
         Address address3 = new Address("Севастополь", "Севастопольская", 33, 303);
@@ -16,6 +16,25 @@ public class ProfilesTest {
                 new Profile(address1),
                 new Profile(address2),
                 new Profile(address3)
+        );
+        List<Address> result = new Profiles().collect(profiles);
+        List<Address> expected = List.of(
+                address1, address3, address2
+        );
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void whenSortingByCityNameLengthAndDeleteDuplicate() {
+        Address address1 = new Address("Москва", "Мышинная", 13, 103);
+        Address address2 = new Address("Ростов-на-Дону", "Ростовская", 23, 203);
+        Address address3 = new Address("Севастополь", "Севастопольская", 33, 303);
+        Address address4 = new Address("Севастополь", "Севастопольская", 33, 303);
+        List<Profile> profiles = List.of(
+                new Profile(address1),
+                new Profile(address2),
+                new Profile(address3),
+                new Profile(address4)
         );
         List<Address> result = new Profiles().collect(profiles);
         List<Address> expected = List.of(

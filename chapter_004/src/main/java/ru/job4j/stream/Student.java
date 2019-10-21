@@ -18,6 +18,10 @@ public class Student {
         return score;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "Student{"
