@@ -45,8 +45,9 @@ public class BankTest {
         Bank bank = new Bank();
         bank.addUser(user);
         bank.addAccountToUser("B88", new Account("Russian_666666", 1000));
+        bank.addAccountToUser("B88", new Account("English_666666", 2000));
         List<Account> list = bank.getUserAccount("B88");
-        assertThat(list.get(0).getRequisites(), is("Russian_666666"));
+        assertThat(list.get(1).getRequisites(), is("English_666666"));
     }
 
     @Test

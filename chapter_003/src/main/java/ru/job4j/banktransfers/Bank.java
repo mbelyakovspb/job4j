@@ -1,6 +1,7 @@
 package ru.job4j.banktransfers;
 
 import java.util.*;
+import java.util.stream.Collectors;
 /**
  * Класс Bank
  * @author Maksim Belyakov (belyak1313@bk.ru)
@@ -8,7 +9,7 @@ import java.util.*;
  * @version 1
  */
 public class Bank {
-    private Map<User, List<Account>> map = new TreeMap<>();
+    private final Map<User, List<Account>> map = new TreeMap<>();
 
     public Map<User, List<Account>> getMap() {
         return map;
@@ -32,12 +33,13 @@ public class Bank {
      * @param passport - данные паспорта пользователя типа String, account - данные создаваемого аккаунта пользователя
      */
     public void addAccountToUser(String passport, Account account) {
-        for (Map.Entry<User, List<Account>> key : this.map.entrySet()) {
-            if (key.getKey().getPassport().equals(passport) && key.getKey().getPassport() != null) {
-                List<Account> list = this.map.get(key.getKey());
-                list.add(account);
-                break;
-            }
+        if (!this.map.isEmpty()) {
+            this.map.entrySet().stream().filter(
+                    userListEntry -> userListEntry.getKey().getPassport().equals(passport))
+                    .collect(Collectors.toMap(
+                            Map.Entry::getKey,
+                            userListEntry -> userListEntry.getValue().add(account)
+                    ));
         }
     }
     /**
@@ -45,15 +47,13 @@ public class Bank {
      * @param passport - данные паспорта пользователя типа String, account - данные аккаунта пользователя
      */
     public void deleteAccountFromUser(String passport, Account account) {
-        for (Map.Entry<User, List<Account>> key : this.map.entrySet()) {
-            if (key.getKey().getPassport().equals(passport) && key.getKey().getPassport() != null) {
-                for (int index = 0; index < this.map.get(key.getKey()).size(); index++) {
-                    if (this.map.get(key.getKey()).get(index).equals(account)) {
-                        map.get(key.getKey()).remove(index);
-                        break;
-                    }
-                }
-            }
+        if (!this.map.isEmpty()) {
+            this.map.entrySet().stream().filter(
+                    userListEntry -> userListEntry.getKey().getPassport().equals(passport))
+                    .collect(Collectors.toMap(
+                            Map.Entry::getKey,
+                            userListEntry -> userListEntry.getValue().remove(account)
+                    ));
         }
     }
     /**
@@ -61,13 +61,13 @@ public class Bank {
      * @param passport - данные паспорта пользователя типа String
      */
     public List<Account> getUserAccount(String passport) {
-        List<Account> list = new ArrayList<>();
-        for (Map.Entry<User, List<Account>> key : this.map.entrySet()) {
-            if (key.getKey().getPassport().equals(passport) && key.getKey().getPassport() != null) {
-                list = this.map.get(key.getKey());
-            }
+        List<Account> accountList = new ArrayList<>();
+        if (!this.map.isEmpty()) {
+            accountList = this.map.entrySet().stream()
+                    .filter(userListEntry -> userListEntry.getKey().getPassport().equals(passport))
+                    .map(Map.Entry::getValue).collect(Collectors.toList()).get(0);
         }
-        return list;
+        return accountList;
     }
     /**
      * Метод для перечисления денежной сумму от одного пользователя другому
@@ -95,18 +95,13 @@ public class Bank {
     /**
      * Метод осуществляет поиск аккаунта пользователя по passport и по requisite
      * @param passport - паспорт пользователя, requisite - реквизиты счета
-     * @return метод возвращает найденный в Map аккаунте пользователя
+     * @return метод возвращает найденный в Map аккаунт пользователя
      */
     public Account accountSearchByDetails(String passport, String requisite) {
-        Account result = null;
         List<Account> list = getUserAccount(passport);
-        for (Account key : list) {
-            if (key.getRequisites().equals(requisite)) {
-                result = key;
-                break;
-            }
-        }
-        return result;
+        return list.stream()
+                .filter(account -> account.getRequisites().equals(requisite))
+                .findFirst().orElse(null);
     }
 }
 
