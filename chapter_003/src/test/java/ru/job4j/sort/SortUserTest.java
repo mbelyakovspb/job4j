@@ -14,15 +14,14 @@ public class SortUserTest {
         list.add(new User(5, "Vasya"));
         list.add(new User(2, "Jora"));
         list.add(new User(0, "Jonik"));
-        List<User> expected = List.of(
+        Set<User> expected = Set.of(
                 new User(0, "Jonik"),
                 new User(1, "Petya"),
                 new User(2, "Jora"),
                 new User(5, "Vasya")
         );
         Set<User> result = new SortUser().sortUser(list);
-        assertTrue(result.containsAll(expected));
-        assertTrue(expected.containsAll(result));
+        assertThat(result, is(expected));
     }
 
     @Test
