@@ -9,8 +9,8 @@ import java.util.Iterator;
  */
 public class ArrayIterator implements Iterator {
     private int[][] array;
-    private int lineArray = 0;
-    private int columnArray = 0;
+    private int line = 0;
+    private int column = 0;
 
     public ArrayIterator(int[][] array) {
         this.array = array;
@@ -18,15 +18,15 @@ public class ArrayIterator implements Iterator {
 
     @Override
     public boolean hasNext() {
-        return lineArray < array.length;
+        return line < array.length;
     }
 
     @Override
     public Object next() {
-        Object result = array[lineArray][columnArray++];
-        if (array[lineArray].length <= columnArray) {
-            lineArray++;
-            columnArray = 0;
+        Object result = array[line][column++];
+        if (array[line].length <= column) {
+            line++;
+            column = 0;
         }
         return result;
     }
