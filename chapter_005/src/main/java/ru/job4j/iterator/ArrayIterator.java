@@ -4,11 +4,11 @@ import java.util.Iterator;
 /**
  * Класс ArrayIteratorTest
  * @author Maksim Belyakov (belyak1313@bk.ru)
- * @since 18.09.2020
+ * @since 18.01.2020
  * @version 1
  */
 public class ArrayIterator implements Iterator {
-    private int[][] array;
+    private final int[][] array;
     private int line = 0;
     private int column = 0;
 

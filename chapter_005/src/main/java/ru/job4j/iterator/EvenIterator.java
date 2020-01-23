@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 /**
  * Класс EvenIterator
  * @author Maksim Belyakov (belyak1313@bk.ru)
- * @since 18.09.2020
+ * @since 18.01.2020
  * @version 1
  */
 public class EvenIterator implements Iterator {
