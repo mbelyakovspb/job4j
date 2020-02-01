@@ -14,13 +14,13 @@ public class Converter {
      */
     Iterator<Integer> convert(Iterator<Iterator<Integer>> iterator) {
         return new Iterator<>() {
-            Iterator<Integer> integerIterator = (new ArrayList<Integer>()).iterator();
+            Iterator<Integer> interior = (new ArrayList<Integer>()).iterator();
             @Override
             public boolean hasNext() {
-                while (iterator.hasNext() && !integerIterator.hasNext()) {
-                    integerIterator = iterator.next();
+                while (iterator.hasNext() && !interior.hasNext()) {
+                    interior = iterator.next();
                 }
-                return integerIterator.hasNext();
+                return interior.hasNext();
             }
 
             @Override
@@ -28,7 +28,7 @@ public class Converter {
                 if (!this.hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return integerIterator.next();
+                return interior.next();
             }
         };
     }
