@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
  * @version 1
  */
 public class SimpleArray<T> {
-    private Object[] objects;
+    private final Object[] objects;
     private int position = 0;
 
     public SimpleArray(int size) {
@@ -23,37 +23,41 @@ public class SimpleArray<T> {
         this.objects[position++] = model;
     }
     /**
+     * Метод checkIndex проверяет index на возможность выхода за границы массива
+     * @param index - номер ячейки, в которой находится нужный элемент
+     */
+    public boolean checkIndex(int index) {
+        if (index >= this.position || index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        return true;
+    }
+    /**
      * Метод set устанавливает другое значение в существующий элемент массива класса SimpleArray
      * @param model - добавляет элемент в параметризованный класс
      * @param index - номер ячейки, в которой находится перезаписываемый элемент
      */
-    public boolean set(int index, T model) {
-        boolean result = false;
+    public void set(int index, T model) {
+        checkIndex(index);
         this.objects[index] = model;
-        if (this.objects[index].equals(model)) {
-            result = true;
-        }
-        return result;
     }
     /**
      * Метод get получает другое значение в существующий элемент массива класса SimpleArray
      * @param index - номер ячейки, в которой находится нужный элемент
      */
     public T get(int index) {
+        checkIndex(index);
         return (T) this.objects[index];
     }
     /**
      * Метод remove удаляет значение вместе с ячейкой в массиве класса SimpleArray
      * @param index - номер ячейки, в которой находится нужный элемент
      */
-    public boolean remove(int index) {
-        if (index < this.position && index >= 0) {
-            System.arraycopy(this.objects, index + 1,
-                    this.objects, index, this.objects.length - 1 - index);
-        } else {
-            throw new IndexOutOfBoundsException();
-        }
-        return true;
+    public void remove(int index) {
+        checkIndex(index);
+        System.arraycopy(this.objects, index + 1,
+                this.objects, index, this.objects.length - 1 - index);
+        this.position--;
     }
     /**
      * Метод iterator для класса SimpleArray

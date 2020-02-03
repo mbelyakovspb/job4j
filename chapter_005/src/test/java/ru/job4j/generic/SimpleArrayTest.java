@@ -30,9 +30,7 @@ public class SimpleArrayTest {
         array.add(100);
         array.add(200);
         array.remove(0);
-        int result = array.get(0);
-        int expected = 200;
-        assertThat(result, is(expected));
+        assertThat(array.get(0), is(200));
     }
 
     @Test
