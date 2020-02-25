@@ -1,7 +1,9 @@
 package ru.job4j.list;
-
 /**
- * Класс SimpleArrayList.
+ * Класс SimpleArrayList
+ * @author Maksim Belyakov (belyak1313@bk.ru)
+ * @since 25.02.2020
+ * @version 1
  */
 public class SimpleArrayList<E> {
 
@@ -10,6 +12,7 @@ public class SimpleArrayList<E> {
 
     /**
      * Метод вставляет в начало списка данные.
+     * @param data - параметризованный объект
      */
     public void add(E data) {
         Node<E> newLink = new Node<>(data);
@@ -17,9 +20,9 @@ public class SimpleArrayList<E> {
         this.first = newLink;
         this.size++;
     }
-
     /**
      * Реализовать метод удаления первого элемент в списке.
+     * @return - параметризованный объект
      */
     public E delete() {
         E result = this.first.data;
@@ -27,9 +30,9 @@ public class SimpleArrayList<E> {
         this.size--;
         return result;
     }
-
     /**
      * Метод получения элемента по индексу.
+     * @return - параметризованный объект
      */
     public E get(int index) {
         Node<E> result = this.first;
@@ -38,16 +41,14 @@ public class SimpleArrayList<E> {
         }
         return result.data;
     }
-
     /**
      * Метод получения размера коллекции.
      */
     public int getSize() {
         return this.size;
     }
-
     /**
-     * Класс предназначен для хранения данных.
+     * Приватный класс предназначен для хранения данных.
      */
     private static class Node<E> {
 
